@@ -1,0 +1,62 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"/>
+
+    <style>
+        * {
+            font-family: 'Prompt', sans-serif;
+        }
+
+        h1, h2, h6{
+            text-align: center;
+        }
+
+        .bill {
+            padding: 1.75rem;
+            width: 50%;
+            -moz-box-shadow: 0 0 5px #888;
+            -webkit-box-shadow: 0 0 5px#888;
+            box-shadow: 0 0 5px #888;
+        }
+
+        .list {
+            padding: 5px 0;
+            border-top: solid 1px #ccc;
+        }
+
+        .is-right{
+          float: right;
+        }
+
+        .is-primary {
+            color: blue;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="bill">
+        <div><h1>จ่ายบิลออมเงิน (ชำระสำเร็จ)</h1></div>
+        <h2>เรียนคุณ <span th:text="${firstname}"/>  <span th:text="${lastname}"/></h2>
+        <h6><span th:text="${currentDateTime}"/></h6>
+        <div class="list">เลขที่รายการ: <span class="is-right" th:text="${transactionNo}"/></div>
+        <div class="list">ชำระเงินจากบัญชี: <span th:text="${depositAccountNo}"/></div>
+        <div class="list">ชำระค่าบริการและสินค้า: <span th:text="${billTitle}"/></div>
+        <div class="list">ค่าสินค้าและบริการ <span class="is-right" th:text="${billAmount} + ' บาท'"/></div>
+        <div class="list is-primary">จำนวนเงินที่ชำระ <span class="is-right" th:text="${billTotalAmount} + ' บาท'"/></div>
+        <div class="list">ค่าธรรมเนียม <span class="is-right" th:text="${feeAmount}"/></div>
+        <div class="list">เข้าบัญชีเงินออม <span th:text="${savingAccountNo}"/><span class="is-right" th:text="${savingAmount} + ' บาท'"/></div>
+        <br />
+        <!--div class="list">เงินออมสะสมของเดือน <span th:text="${savingPerMonthDate}"/>  <span class="is-right" th:text="${savingPerMonthAmt} + ' บาท'"/></div>
+        <div class="list">เงินออมสะสมคงเหลือ <span class="is-right" th:text="${savingPerMonthBalance} + ' บาท'"/></div>
+        <small>ณ วันที่ <span th:text="${savingPerMonthCurrentDateTime}"/></small>
+        <div class="list">เงินออมสะสมทั้งหมด <span class="is-right" th:text="${savingTotalBalance} + ' บาท'"/></div-->
+    </div>
+</body>
+</html>
+
+
+

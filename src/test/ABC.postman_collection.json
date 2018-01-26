@@ -1,0 +1,183 @@
+{
+	"id": "9f23579f-1abf-a332-c2f9-ca4a8416ff01",
+	"name": "ABC",
+	"description": "",
+	"order": [
+		"cca1b5ee-1bfa-fe43-d933-6063ea6ecea1",
+		"7043dfe5-3c61-a9d4-3cd9-69cc964cc8ec",
+		"74849612-fb5e-5e71-f4f5-0edec69f40df"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1516941177807,
+	"owner": 0,
+	"public": false,
+	"events": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1e24e4bc-6fc6-4f9c-8e01-90508248ad30",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4f199d43-4953-4ec1-9473-79b12b55cf3e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variables": [
+		{
+			"key": "accountName",
+			"value": "",
+			"description": "",
+			"type": "text",
+			"disabled": false
+		}
+	],
+	"auth": null,
+	"requests": [
+		{
+			"id": "7043dfe5-3c61-a9d4-3cd9-69cc964cc8ec",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9080/abc-api/transaction",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1516943476211,
+			"name": "Save Transaction2",
+			"description": "",
+			"collectionId": "9f23579f-1abf-a332-c2f9-ca4a8416ff01",
+			"responses": [],
+			"isFromCollection": true,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\"accountName\":{{accountName}},\"accountId\":\"101\",\"email\":\"natapong.saratham@gmail.com\",\"depositAccountNo\":\"70000000000001\",\"mercDesc\":\"การไฟฟ้านครหลวง\",\"billRefNo\":\"1234567891\",\"billAmount\":1250.53,\"feeAmount\":\"0\",\"savingAccountNo\":\"10000000000001\",\"savingAmount\":49.47}"
+		},
+		{
+			"id": "74849612-fb5e-5e71-f4f5-0edec69f40df",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9080/abc-api/transaction",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2efc1583-532f-4705-9c81-d038ddd7fcd1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1516944901494,
+			"name": "Save Transaction",
+			"description": "",
+			"collectionId": "9f23579f-1abf-a332-c2f9-ca4a8416ff01",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\"accountName\":{{accountName}},\"accountId\":\"101\",\"email\":\"natapong.saratham@gmail.com\",\"depositAccountNo\":\"70000000000001\",\"mercDesc\":\"การไฟฟ้านครหลวง\",\"billRefNo\":\"1234567891\",\"billAmount\":1250.53,\"feeAmount\":\"0\",\"savingAccountNo\":\"10000000000001\",\"savingAmount\":49.47}"
+		},
+		{
+			"id": "cca1b5ee-1bfa-fe43-d933-6063ea6ecea1",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:9080/abc-api/payment/getPaymentInfo?accountId=101&billRefNo=1234567891",
+			"queryParams": [
+				{
+					"key": "accountId",
+					"value": "101",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "billRefNo",
+					"value": "1234567891",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "75bd359e-f7b9-449d-922c-d8193f8564a8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response code 55\", function () { ",
+							"    responseCode.code == 200;",
+							"    ",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"accountName\", jsonData.accountName);",
+							"",
+							"",
+							"",
+							"//postman.setNextRequest('Save Transaction');"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"auth": null,
+			"time": 1516946046645,
+			"name": "Get payment Info",
+			"description": "",
+			"collectionId": "9f23579f-1abf-a332-c2f9-ca4a8416ff01",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "pm.test(\"response code 55\", function () { \n    responseCode.code == 200;\n    \n});\n\nvar jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"accountName\", jsonData.accountName);\n\n\n\n//postman.setNextRequest('Save Transaction');",
+			"currentHelper": null,
+			"helperAttributes": null
+		}
+	]
+}
